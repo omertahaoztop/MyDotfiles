@@ -1,6 +1,6 @@
 # MyDotfiles
 ## Installation
 ```
-wget https://github.com/omertahaoztop/MyDotfiles/blob/main/bspwm.sh
+https://raw.githubusercontent.com/omertahaoztop/MyDotfiles/main/bspwm.sh
 bash bspwm.sh
 ```
