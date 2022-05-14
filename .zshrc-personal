@@ -28,10 +28,10 @@ alias m='mocp'
 alias matrix='unimatrix -f -l ocCgGkS -s 96'
 alias mem="ps axch -o cmd:15,%mem --sort=-%mem | head"
 alias merge="xrdb -merge ~/.Xresources"
-alias mirror="sudo reflector -f 10 -l 10 --number 10 --verbose --save /etc/pacman.d/mirrorlist" # update your mirrors
-alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 30 --number 10 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 30 --number 10 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirror="doas reflector -f 10 -l 10 --number 10 --verbose --save /etc/pacman.d/mirrorlist" # update your mirrors
+alias mirrora="doas reflector --latest 30 --number 10 --sort age --save /etc/pacman.d/mirrorlist"
+alias mirrord="doas reflector --latest 30 --number 10 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="doas reflector --latest 30 --number 10 --sort score --save /etc/pacman.d/mirrorlist"
 alias mv='mv -i'
 alias pdw="pwd"
 alias pipes='pipes -R -t 1'
@@ -40,9 +40,9 @@ alias rg="rg --sort path --no-ignore --hidden" #search content with ripgrep
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl" #Recent Installed Packages
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
 alias rm='rm -i'
-alias unlock="sudo rm /var/lib/pacman/db.lck"
-alias update='sudo pacman -Syyu'
-alias updatefonts='sudo fc-cache -fv'
+alias unlock="doas rm /var/lib/pacman/db.lck"
+alias update='doas pacman -Syyu'
+alias updatefonts='doas fc-cache -fv'
 alias wget="wget -c" # continue the download
 
 # required functions
