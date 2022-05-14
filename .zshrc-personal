@@ -1,7 +1,9 @@
 #aliases
 alias cat='bat'
 alias cd..='cd ..'
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq);paru -c' #Cleanup orphaned packages
+alias sudo='doas'
+alias sudoedit='doas rnano'
+alias cleanup='doas pacman -Rns $(pacman -Qtdq);paru -c' #Cleanup orphaned packages
 alias clock='tty-clock -sct -C 4'
 alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | head"
 alias df='df -h'
