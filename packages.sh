@@ -6,7 +6,7 @@ sudo pacman -S --noconfirm git base-devel fakeroot jshon expac wget rsync curl
 ## Kubectl ##
 sudo pacman -S  --noconfirm kubectl
 ## DOAS ##
-sudo pacman -S doas
+sudo pacman -S --noconfirm doas
 sudo sh -c echo "permit nopass omertahaoztop as root" >> /etc/doas.conf
 ## Vulkan API For gaming ##
 sudo pacman -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
