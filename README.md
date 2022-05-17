@@ -11,4 +11,4 @@ bash packages.sh
   - https://github.com/siduck/dotfiles
   - https://github.com/MatheusTT/dofiles
 - [ ] Neovim Config
-   - NvChad & Lunarvim
+   - NvChad & Lunarvim & AstroNvim
