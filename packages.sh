@@ -5,6 +5,8 @@ sudo pacman -Syyuu
 sudo pacman -S --noconfirm git base-devel fakeroot jshon expac wget rsync curl
 ## Kubectl ##
 sudo pacman -S  --noconfirm kubectl
+## Spotifyd ##
+sudo pacman -S spotifyd
 ## DOAS ##
 sudo pacman -S --noconfirm doas
 sudo sh -c echo "permit nopass omertahaoztop as root" >> /etc/doas.conf
@@ -20,4 +22,4 @@ sudo pacman -S --needed --noconfirm wine-staging lutris giflib lib32-giflib libp
 ## Utilities ##
 sudo pacman -S --noconfirm vlc python-pip gnome-disk-utility vlc qbittorrent 
 ## AUR Packages ##
-paru -S spotify telegram-desktop-bin visual-studio-code-bin whatsapp-nativefier gitkraken
+paru -S spotify-tui telegram-desktop-bin visual-studio-code-bin whatsapp-nativefier gitkraken
