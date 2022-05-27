@@ -3,8 +3,8 @@
 sudo pacman -Syyuu
 ## Git and Development Tools ##
 sudo pacman -S --noconfirm git base-devel fakeroot jshon expac wget rsync curl
-## Kubectl ##
-sudo pacman -S  --noconfirm kubectl
+## Kubernetes Tools ##
+sudo pacman -S  --noconfirm kubectl k9s kubectx
 ## Spotifyd ##
 sudo pacman -S spotifyd
 ## DOAS ##
