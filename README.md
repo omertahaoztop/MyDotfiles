@@ -2,7 +2,7 @@
 ## Installation
 ```
 wget https://raw.githubusercontent.com/omertahaoztop/MyDotfiles/main/bspwm.sh
-wget wget https://raw.githubusercontent.com/omertahaoztop/MyDotfiles/main/packages.sh
+wget https://raw.githubusercontent.com/omertahaoztop/MyDotfiles/main/packages.sh
 bash bspwm.sh
 bash packages.sh
 ```
