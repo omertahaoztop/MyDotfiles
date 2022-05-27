@@ -2,7 +2,7 @@
 sudo pacman -Syu --needed git base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin && makepkg -si
-paru -S alacritty bspwm sxhkd feh polybar xorg-xsetroot xorg-xbacklight light pamixer picom-jonaburg-git dunst rofi flameshot ksuperkey nerd-fonts-jetbrains-mono polkit-gnome fm6000 network-manager-applet helix xfce4-power-manager betterlockscreen zsh zsh-autosuggestions zsh-syntax-highlighting oh-my-zsh-git catppuccin-gtk-theme papirus-icon-theme --needed --noconfirm
+paru -S alacritty ttf-material-design-iconic-font  bspwm sxhkd feh polybar xorg-xsetroot xorg-xbacklight light pamixer picom-jonaburg-git dunst rofi flameshot ksuperkey nerd-fonts-jetbrains-mono polkit-gnome fm6000 network-manager-applet helix xfce4-power-manager betterlockscreen zsh zsh-autosuggestions zsh-syntax-highlighting oh-my-zsh-git catppuccin-gtk-theme papirus-icon-theme --needed --noconfirm
 git clone https://github.com/omertahaoztop/MyDotfiles 
 cd MyDotfiles
 \cp -R .config/* ~/.config/
