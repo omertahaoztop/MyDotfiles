@@ -8,7 +8,7 @@ sudo pacman -S  --noconfirm kubectl k9s kubectx
 ## Browsers## 
 sudo pacman -S --noconfirm chromium firefox
 ## Bat & exa ##
-sudo pacman -S --noconfirmbat exa
+sudo pacman -S --noconfirm bat exa
 ## DOAS ##
 sudo pacman -S --noconfirm doas
 ## Vulkan API For gaming ##
