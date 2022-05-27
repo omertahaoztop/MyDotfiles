@@ -11,6 +11,7 @@ And Check This;
 https://agrimprasad.com/post/supercharge-kubernetes-setup/
 And Install AstroNvim,Tmux,Mutt,Stern
 ## Need Run this commands before & after install
+### NOTE: Edit packages.sh for Graphics card and bspwmrc for monitor
 ```
 sudo pacman -S archlinux-keyring
 sudo pacman -S reflector rsync curl
