@@ -9,7 +9,6 @@ sudo pacman -S  --noconfirm kubectl k9s kubectx
 sudo pacman -S -- noconfirm chromium firefox
 ## DOAS ##
 sudo pacman -S --noconfirm doas
-sudo sh -c echo "permit nopass omertahaoztop as root" >> /etc/doas.conf
 ## Vulkan API For gaming ##
 sudo pacman -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ## Wine Dependencies and Lutris ##
