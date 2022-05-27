@@ -5,15 +5,15 @@ sudo pacman -Syyuu
 sudo pacman -S --noconfirm git base-devel fakeroot jshon expac wget rsync curl
 ## Kubernetes Tools ##
 sudo pacman -S  --noconfirm kubectl k9s kubectx
-## Spotifyd ##
-sudo pacman -S spotifyd
+## Browsers## 
+sudo pacman -S -- noconfirm chromium firefox
 ## DOAS ##
 sudo pacman -S --noconfirm doas
 sudo sh -c echo "permit nopass omertahaoztop as root" >> /etc/doas.conf
 ## Vulkan API For gaming ##
 sudo pacman -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ## Wine Dependencies and Lutris ##
-sudo pacman -S --needed --noconfirm wine-staging lutris giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls \
+sudo pacman -S --needed --noconfirm giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls \
 	mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error \
 	lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo \
 	sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama \
@@ -22,4 +22,4 @@ sudo pacman -S --needed --noconfirm wine-staging lutris giflib lib32-giflib libp
 ## Utilities ##
 sudo pacman -S --noconfirm vlc python-pip gnome-disk-utility vlc qbittorrent 
 ## AUR Packages ##
-paru -S spotify-tui telegram-desktop-bin visual-studio-code-bin whatsapp-nativefier gitkraken
+paru -S telegram-desktop-bin visual-studio-code-bin whatsapp-nativefier
