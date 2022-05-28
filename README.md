@@ -25,6 +25,11 @@ sudo pacman -S libxcrypt-compat
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 ## Zshrc-personal
+git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+nvim +PackerSync
+sudo su
+git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+nvim +PackerSync
 echo alias kctx="kubectx" >> ~/.zshrc-personal
 alias kns="kubens" >> ~/.zshrc-personal
 alias k="kubectl" >> ~/.zshrc-personal
@@ -33,7 +38,10 @@ chmod -R 755 ~/.oh-my-zsh/completions
 ln -s /opt/kubectx/completion/kubectx.zsh ~/.oh-my-zsh/completions/_kubectx.zsh
 ln -s /opt/kubectx/completion/kubens.zsh ~/.oh-my-zsh/completions/_kubens.zsh
 brew install kube-ps1
+source "/home/linuxbrew/.linuxbrew/opt/kube-ps1/share/kube-ps1.sh" >> .zshrc
+PS1='$(kube_ps1)'$PS1
 brew install stern
 brew install thefuck
+eval $(thefuck --alias) >> .zshrc
 
 ```
