@@ -21,4 +21,19 @@ sudo pacman -Rdd picom-ibhagwan-git
 # After installation
 bash
 permit nopass omertahaoztop as root >> /etc/doas.conf
+sudo pacman -S libxcrypt-compat 
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+## Zshrc-personal
+echo alias kctx="kubectx" >> ~/.zshrc-personal
+alias kns="kubens" >> ~/.zshrc-personal
+alias k="kubectl" >> ~/.zshrc-personal
+mkdir -p ~/.oh-my-zsh/completions
+chmod -R 755 ~/.oh-my-zsh/completions
+ln -s /opt/kubectx/completion/kubectx.zsh ~/.oh-my-zsh/completions/_kubectx.zsh
+ln -s /opt/kubectx/completion/kubens.zsh ~/.oh-my-zsh/completions/_kubens.zsh
+brew install kube-ps1
+brew install stern
+brew install thefuck
+
 ```
