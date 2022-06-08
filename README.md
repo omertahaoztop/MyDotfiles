@@ -43,5 +43,5 @@ PS1='$(kube_ps1)'$PS1
 brew install stern
 brew install thefuck
 eval $(thefuck --alias) >> .zshrc
-
+sudo npm install -g undollar
 ```
