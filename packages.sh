@@ -24,3 +24,5 @@ sudo pacman -S --needed --noconfirm giflib lib32-giflib libpng lib32-libpng libl
 sudo pacman -S --noconfirm vlc python-pip gnome-disk-utility vlc qbittorrent 
 ## AUR Packages ##
 paru -S telegram-desktop-bin visual-studio-code-bin whatsapp-nativefier
+git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+nvim +PackerSync

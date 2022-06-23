@@ -1,5 +1,6 @@
 #aliases
 alias cat='bat'
+alias vim="nvim"
 alias cd..='cd ..'
 alias sudo='doas'
 alias sudoedit='doas rnano'
