@@ -6,7 +6,6 @@ feh --no-fehbg --randomize --bg-scale $HOME/.config/bspwm/backgrounds/*
 pgrep -x sxhkd > /dev/null || sxhkd &
 $HOME/.config/bspwm/polybar/launch.sh
 bash $HOME/.screenlayout/screen.sh
-setxkbmap tr
 bspc monitor HDMI-A-0 -d I II III IV V
 bspc wm -O HDMI-A-0
 bspc config border_width         0
