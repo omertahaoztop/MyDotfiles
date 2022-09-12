@@ -6,7 +6,7 @@ feh --no-fehbg --randomize --bg-scale $HOME/.config/bspwm/backgrounds/*
 pgrep -x sxhkd > /dev/null || sxhkd &
 $HOME/.config/bspwm/polybar/launch.sh
 bash $HOME/.screenlayout/screen.sh
-bspc monitor HDMI-A-0 -d I II III IV V
+bspc monitor HDMI-A-0 -d '' '' '' '' '' '' '漣' 
 bspc wm -O HDMI-A-0
 bspc config border_width         0
 bspc config window_gap           10

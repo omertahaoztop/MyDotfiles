@@ -1,86 +1,84 @@
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-;; Global WM Settings
 
 [global/wm]
 margin-bottom = 0
 margin-top = 0
 
-include-file = ~/.config/bspwm/polybar/system
 include-file = ~/.config/bspwm/polybar/colors
 include-file = ~/.config/bspwm/polybar/modules
+include-file = ~/.config/bspwm/polybar/decor
+include-file = ~/.config/bspwm/polybar/system
 
-[bar/main]
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[bar/bar]
 monitor =
+monitor-fallback =
 monitor-strict = false
+
 override-redirect = false
 
 bottom = false
 fixed-center = true
 
-width = 100%
-height = 24
-offset-x = 0
-offset-y = 0
+width = 98%
+height = 25
 
-background = ${color.BACKGROUND}
-foreground = ${color.FOREGROUND}
+offset-x = 1%
+offset-y = 1%
+
+background = ${color.background}
+foreground = ${color.foreground}
 
 radius-top = 0.0
 radius-bottom = 0.0
 
 line-size = 2
-line-color = ${color.BLUE}
+line-color = ${color.blue}
 
-border-size = 4
-border-color = ${color.BACKGROUND}
+border-size = 6
+border-color = ${color.background}
 
-padding = 1
+padding = 0
+
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Iosevka Nerd Font:size=10;3"
+wm-restack = bspwm
+
+font-0 = "Source Code Pro Medium:size=10;3"
 font-1 = "Iosevka Nerd Font:size=12;3"
-font-2 = "google\-mdi:size=12;3"
-font-3 = "Iosevka:style=bold:"size=12;3"
+font-2 = "Iosevka Nerd Font:size=16;4"
+font-3 = "Iosevka Nerd Font:size=18;4"
+font-4 = "Source Code Pro Bold:size=13;3"
 
-modules-left = mod sep bspwm
-modules-center = mpd
-modules-right = volume sep brightness sep ethernet sep battery sep date
+# Default
+modules-left = spacing BLD launcher BRD sep bspwm
+modules-center = 
+modules-right = BLD battery MPL volume RPL brightness RRD sep GLD cpu YPL memory CPL filesystem CRD sep BLD time BRD spacing
 
-separator =
 spacing = 0
-
 dim-value = 1.0
-
-wm-name = bspwm
-locale = 
 
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
-tray-transparent = false
-tray-background = ${color.BACKGROUND}
+tray-background = ${color.background}
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 0
 tray-scale = 1.0
 
-wm-restack = bspwm
-
 enable-ipc = true
 
-; bspwm
-scroll-up = bspc desktop -f prev.local
-scroll-down = bspc desktop -f next.local
+cursor-click = 
+cursor-scroll = 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [settings]
 throttle-output = 5
 throttle-output-for = 10
-throttle-input-for = 30
 
 screenchange-reload = false
 
@@ -90,11 +88,6 @@ compositing-overline = over
 compositing-underline = over
 compositing-border = over
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-;;	    __________  ______
-;;	   / ____/ __ \/ ____/
-;;	  / __/ / / / / /_    
-;;	 / /___/ /_/ / __/    
-;;	/_____/\____/_/       
-;;
+pseudo-transparency = false
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
