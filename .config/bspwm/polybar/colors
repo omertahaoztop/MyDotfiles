@@ -1,20 +1,78 @@
-[color]
-background = #1a1b26
-foreground = #a9b1d6
-black = #32344a
-red = #f7768e
-green = #9ece6a
-yellow = #e0af68
-blue = #7aa2f7
-magenta = #ad8ee6
-cyan = #449dab
-white = #787c99
-altblack = #444b6a
-altred = #ff7a93
-altgreen = #b9f27c
-altyellow = #ff9e64
-altblue = #7da6ff
-altmagenta = #bb9af7
-altcyan = #0db9d7
-altwhite = #acb0d0
+;-------------------------
 
+; Catppuccin Mocha Palette
+
+; Maintainer: justTOBBI
+
+;--------------------------
+
+
+
+[color]
+
+ background = #1e1e2e
+
+ mantle = #181825
+
+ crust = #11111b
+
+
+
+ foreground = #cdd6f4
+
+ subtext0 = #a6adc8
+
+ subtext1 = #bac2de
+
+
+
+ surface0 = #313244
+
+ surface1 = #45475a
+
+ surface2 = #585b70
+
+ 
+
+ overlay0 = #6c7086
+
+ overlay1 = #7f849c
+
+ overlay2 = #9399b2
+
+ 
+
+
+
+ blue = #89b4fa
+
+ lavender = #b4befe
+ purple = #b4befe
+
+ sapphire = #74c7ec
+
+ sky = #89dceb
+
+ teal = #94e2d5
+
+ green = #a6e3a1
+
+ yellow = #f9e2af
+
+ peach = #fab387
+
+ maroon = #eba0ac
+
+ red = #f38ba8
+
+ mauve = #cba6f7
+
+ pink = #f5c2e7
+
+ flamingo = #f2cdcd
+
+ rosewater = #f5e0dc
+
+
+
+ transparent = #FF00000

@@ -39,9 +39,9 @@ launch_bar() {
 			touch "$MFILE"
 		fi
 	fi
-		
+
 	if [[ ! $(pidof polybar) ]]; then
-		polybar -q bar -c "$DIR"/config &
+		polybar -q bar -c "$DIR"/config & polybar -q middle -c "$DIR"/config & polybar -q right -c "$DIR"/config&
 	else
 		polybar-msg cmd restart
 	fi
