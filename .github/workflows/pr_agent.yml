@@ -1,0 +1,97 @@
+# Automatic PR review with PR-Agent (MIT, community-owned fork of Qodo's original).
+#
+# Runs on every PR open/update and replies to /review, /describe, /improve and
+# /ask comments. One LLM call per tool, ~30s.
+#
+# The model is this account's own endpoint (api.neuralwatt.com, OpenAI-compatible)
+# so diffs go to a provider we already pay for, not to a review SaaS.
+#
+# `pull_request` (not `pull_request_target`) is deliberate: on a public repo the
+# secrets are then never exposed to fork PRs, so an outside contributor cannot
+# spend the API key by opening a pull request. The trade-off is that fork PRs are
+# not reviewed at all — the job fails fast on the missing key.
+name: PR Agent
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
+  issue_comment:
+    # `created` only: editing or deleting a command comment would otherwise
+    # re-run the job and post the answer twice.
+    types: [created]
+
+concurrency:
+  # The event name is part of the key so a push cancelling an in-flight review
+  # does not also cancel a command someone just asked for.
+  group: pr-agent-${{ github.event_name }}-${{ github.event.pull_request.number || github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  pr_agent_job:
+    # A hung model call can leave the job running for tens of minutes; the normal
+    # run is ~3 minutes, so cap it and let GitHub kill a stuck one.
+    timeout-minutes: 15
+    # Commands (/review, /ask, …) come in as issue_comment events, which run from
+    # the default branch WITH repository secrets — so on a public repo any
+    # passer-by could spend the API key by commenting. Only the repo owner,
+    # members and collaborators may invoke them, and only on a pull request.
+    #
+    # The sender-type check also skips PRs opened by bots (Dependabot, Renovate).
+    # That is deliberate: dependency bumps were excluded from review before
+    # (`auto_review.ignore_title_keywords` in the old CodeRabbit org config).
+    # Drop the `sender.type` clause if those PRs should be reviewed too.
+    if: >-
+      github.event.sender.type != 'Bot' &&
+      (github.event_name != 'issue_comment' ||
+       (github.event.issue.pull_request != null &&
+        contains(fromJson('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - name: PR Agent
+        # Pinned to the v0.48.0 commit: @main is mutable, and this job holds a
+        # token with write access plus the API key.
+        uses: the-pr-agent/pr-agent@981344be2755e303df501e18e3f60b848a188a80
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Same env names as the local `git-review pragent` wrapper, so one
+          # config shape covers both paths.
+          OPENAI__KEY: ${{ secrets.NEURALWATT_API_KEY }}
+          OPENAI__API_BASE: "https://api.neuralwatt.com/v1"
+          # The review quality is the model: on the same diff the flash model
+          # missed a real sanitization inconsistency that nw-large, kimi-k3,
+          # glm-5.3 and Kodus all caught. kimi-k3 is the fastest of those.
+          CONFIG__MODEL: "openai/kimi-k3"
+          CONFIG__CUSTOM_MODEL_MAX_TOKENS: "128000"
+          # max_model_tokens defaults to 32k, which silently drops files from the
+          # review ("not included because of the token budget"). The endpoint
+          # serves 128k, so raise the cap and chunk anything larger.
+          CONFIG__MAX_MODEL_TOKENS: "120000"
+          PR_REVIEWER.ENABLE_LARGE_PR_CHUNKING: "true"
+          # Line-anchored findings: each review finding is also posted as an inline
+          # comment on the changed line (off by default), and the default cap of
+          # three findings is raised.
+          PR_REVIEWER.INLINE_KEY_ISSUES: "true"
+          PR_REVIEWER.NUM_MAX_FINDINGS: "12"
+          PR_REVIEWER.REQUIRE_RISK_ASSESSMENT: "true"
+          PR_REVIEWER.REQUIRE_MERGE_RECOMMENDATION: "true"
+          # Every push is reviewed, so identical inline comments must not pile up.
+          CONFIG__PERSISTENT_INLINE_COMMENTS: "true"
+          # A failure must not fall back to the shipped default model, which this
+          # endpoint does not serve ("Model 'gpt-5.6-terra' not found").
+          CONFIG__FALLBACK_MODELS: '["openai/kimi-k3"]'
+          # Review and describe every new PR.
+          #
+          # auto_improve stays off: the code-suggestion call does not work on this
+          # model — with an output cap it returns empty content
+          # ("finish_reason: length"), without one it generates for over 13
+          # minutes. `/improve` is still available as a command.
+          github_action_config.auto_review: "true"
+          github_action_config.auto_describe: "true"
+          github_action_config.auto_improve: "false"
+          # The action skips `synchronize` by default, so a push to an open PR
+          # would go unreviewed; list the events explicitly to review every push.
+          github_action_config.pr_actions: '["opened", "reopened", "synchronize", "ready_for_review"]'
