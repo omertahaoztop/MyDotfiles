@@ -45,3 +45,11 @@ brew install thefuck
 eval $(thefuck --alias) >> .zshrc
 sudo npm install -g undollar
 ```
+
+## License
+
+Copyright (C) 2022-2026 Ömer Taha Öztop.
+
+GPL-3.0-only — see [LICENSE](LICENSE).
+
+Files under `.config/bspwm/` carry their own notice: Copyright (C) 2020-2022 Aditya Shakya (adi1090x), GPL-3.0.
